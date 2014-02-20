@@ -5,7 +5,7 @@ import os
 
 
 def speak(text='hello', lang='en', fname='result.wav', player='mplayer'):
-    """ Send text to Google's text to speech service
+    """ Sends text to Google's text to speech service
     and returns created speech (wav file). """
 
     limit = min(100, len(text))#100 characters is the current limit.
@@ -21,13 +21,18 @@ def speak(text='hello', lang='en', fname='result.wav', player='mplayer'):
     f.write(p.read())
     f.close()
     print "Speech saved to:", fname
-    play_wav(fname, player)
+    if player is not None:
+        play_wav(fname, player)
 
 
 def play_wav(filep, player='mplayer'):
+    ''' Plays filep using player '''
     print "Playing %s file using %s" % (filep, player)
-    os.system(player + " " + filep)
+    try:
+        os.system(player + " " + filep)
+    except:
+        print "Couldn't use %s to play file" % (player)
 
 
 if(__name__ == '__main__'):
-    speak("Hello world. The time is %s" % (time.time()))
+    speak("Hello world. The time is %s" % (time.strftime('%H %M')))
