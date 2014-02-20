@@ -4,7 +4,7 @@ import time
 import os
 
 
-def speak(text='hello', lang='en', fname='result.wav', player='mplayer'):
+def speak(text='hello', lang='en', fname='result.wav', player=None):
     """ Sends text to Google's text to speech service
     and returns created speech (wav file). """
 
@@ -35,4 +35,4 @@ def play_wav(filep, player='mplayer'):
 
 
 if(__name__ == '__main__'):
-    speak("Hello world. The time is %s" % (time.strftime('%H %M')))
+    speak("Hello world. The time is %s" % (time.strftime('%H %M')), 'mplayer')

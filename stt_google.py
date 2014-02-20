@@ -13,7 +13,7 @@ LANG_CODE = 'en-US'  # Language to use
 GOOGLE_SPEECH_URL = 'https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&pfilter=2&lang=%s&maxresults=6' % (LANG_CODE)
 
 FLAC_CONV = 'flac -f'  # We need a WAV to FLAC converter. flac is available
-                        # on Linux
+                       # on Linux
 
 # Microphone stream config.
 CHUNK = 1024  # CHUNKS of bytes to read each time from mic
@@ -28,7 +28,7 @@ SILENCE_LIMIT = 1  # Silence limit in seconds. The max ammount of seconds where
                    # recording finishes and the file is delivered.
 
 PREV_AUDIO = 0.5  # Previous audio (in seconds) to prepend. When noise
-                  # is detected, how much of previous recorded audio is
+                  # is detected, how much of previously recorded audio is
                   # prepended. This helps to prevent chopping the beggining
                   # of the phrase.
 
@@ -185,5 +185,5 @@ def stt_google_wav(audio_fname):
 
 if(__name__ == '__main__'):
     listen_for_speech()  # listen to mic.
-    print stt_google_wav('hello.flac')  # translate audio file
+    #print stt_google_wav('hello.flac')  # translate audio file
     #audio_int()  # To measure your mic levels
