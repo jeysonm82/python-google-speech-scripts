@@ -9,8 +9,9 @@ import time
 import math
 
 LANG_CODE = 'en-US'  # Language to use
+GOOGLE_SPEECH_KEY = "" #Your google speech api goes here
 
-GOOGLE_SPEECH_URL = 'https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&pfilter=2&lang=%s&maxresults=6' % (LANG_CODE)
+GOOGLE_SPEECH_URL = 'https://www.google.com/speech-api/v2/recognize?output=json&lang=%s&key=%s' % (LANG_CODE, GOOGLE_SPEECH_KEY)
 
 FLAC_CONV = 'flac -f'  # We need a WAV to FLAC converter. flac is available
                        # on Linux
@@ -51,7 +52,7 @@ def audio_int(num_samples=50):
     values = [math.sqrt(abs(audioop.avg(stream.read(CHUNK), 4))) 
               for x in range(num_samples)] 
     values = sorted(values, reverse=True)
-    r = sum(values[:int(num_samples * 0.2)]) / int(num_samples * 0.2)
+    r = sum(values[:int(num_samples)]) / int(num_samples)
     print " Finished "
     print " Average audio intensity is ", r
     stream.close()
