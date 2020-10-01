@@ -7,6 +7,13 @@ import urllib2
 import urllib
 import time
 import math
+#for adding voice output functionality pass your return parameter into voice(p)
+#for audio output instead of print it is short and simple code.And had great effect
+import playsound
+def voice(p):
+    myobj=gTTS(text=p,lang='en',slow=False)
+    myobj.save('try.mp3')
+    playsound('try.mp3')
 
 LANG_CODE = 'en-US'  # Language to use
 
